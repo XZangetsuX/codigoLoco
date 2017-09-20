@@ -1,0 +1,247 @@
+import java.util.Scanner;
+
+public class Tarea_de_Arreglos {
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner entrada=new Scanner(System.in);
+		int[][] a;
+		int [][]m;
+		int n;
+		int resp;
+		do {
+			
+		
+		System.out.println("Elije una opción: "
+				+ "\n 1.Hacer un método que genere una matriz n x m , en la cual asigne ceros a todos los elementos, excepto a los de la diagonal principal donde asignaran unos."
+				+ "\n 2.Codificar un programa que genere una matriz n x m con ceros en la diagonal principal hacia arriba."
+				+ "\n 3.Dada una matriz de M*M elementos, hacer un programa que construya un vector B, donde cada uno de sus componentes sea la suma de los elementos de valores numéricos pares de las filas de la matriz."
+				+ "\n 4.Escribir un programa que lea las dimensiones de una matriz, lea y visualice la matriz y a continuación encuentre el mayor y menor elemento de la matriz y sus posiciones.");
+		
+		int key=Integer.parseInt(entrada.nextLine());
+		
+		switch (key) {
+		case 1:
+			 a= new int  [5][5]; //El arreglo se puede llenar con random.
+			 
+		       for (int i = 0; i < a.length; i++) 
+		       { 
+		           for (int j = 0; j < a.length; j++) 
+		           { 
+		               if (i==j)
+		                    a[i][j] = 1; 
+		               else
+		                    a[i][j] = 0; 
+		           } 
+		 
+		       } 
+		 
+		       //imprime elementos 
+		       System.out.println("Imprimiendo Matríz"); 
+		       for (int i = 0; i < a.length; i++) 
+		       { 
+		           for (int j = 0; j < a.length; j++) 
+		           { 
+		               System.out.print(" " + a[i][j]); 
+		           } 
+		           System.out.println(); 
+		       } 
+			
+			break;
+			
+		case 2:
+			
+			 a= new int  [5][5]; //El arreglo se puede llenar con random.
+			 
+		       for (int i = 0; i < a.length; i++) 
+		       { 
+		           for (int j = 0; j < a.length; j++) 
+		           { 
+		               if (i>j)
+		                    a[i][j] = 1; 
+		               else
+		                    a[i][j] = 0; 
+		           } 
+		 
+		       } 
+		 
+		       //imprime elementos 
+		       System.out.println("Imprimiendo Matríz"); 
+		       for (int i = 0; i < a.length; i++) 
+		       { 
+		           for (int j = 0; j < a.length; j++) 
+		           { 
+		               System.out.print(" " + a[i][j]); 
+		           } 
+		           System.out.println(); 
+		       } 
+			
+			break;
+			
+		case 3:
+			
+			
+			
+			System.out.println("Introduce la dimención de la matríz");
+			n=Integer.parseInt(entrada.nextLine());
+			
+			m = new int [n][n];
+			int s[][]=new int [n][n];
+			
+			for (int i = 0; i < m.length; i++) {
+				for (int j = 0; j < m.length; j++) {
+					
+					m[i][j]=(int)(Math.random()*10);
+					
+				}
+			}
+			
+			System.out.println("Imprimiendo Matríz");
+			for (int i = 0; i < m.length; i++)
+			{
+				for (int j = 0; j < m.length; j++)
+				{
+					
+					System.out.print( " " + m[i][j]);
+					
+					if(m[i][j]%2==0){
+						
+						s[i][j]=s[i][j]+ m[i][j];
+						
+						
+					}
+					
+				}
+				System.out.println();
+			}
+			
+			System.out.println();
+			System.out.println("Imprimiendo Pares");
+			for (int i = 0; i < s.length; i++) {
+				
+				for (int j = 0; j < s.length; j++) {
+					
+					if(s[i][j]!=0){
+			System.out.print(" ["+s[i][j]+"] ");
+					}
+				}
+				System.out.print("");
+				
+			}
+			System.out.println("");
+			
+			break;
+	
+		case 4:
+			
+			int mayor=0;
+
+					
+					System.out.println("Introduce la dimención");
+					n=Integer.parseInt(entrada.nextLine());
+					
+					m = new int [n][n];
+					
+					
+					System.out.println("Imprimiendo matriz");
+					for (int i = 0; i < m.length; i++) {
+						for (int j = 0; j < m.length; j++) {
+							m[i][j]=(int)(Math.random()*10);
+							System.out.print( " " + m[i][j]);
+						}
+						System.out.println();
+					}
+					int menor = m[0][0];
+					
+					for (int i = 0; i < m.length; i++) {
+						for (int j = 0; j < m.length; j++) {
+							
+							if(m[i][j]>mayor){
+								mayor=m[i][j];
+								
+							}else if(m[i][j]<menor){
+								menor=m[i][j];
+							}
+							
+						}
+					}
+					
+					
+					System.out.print("El numero menor es "+menor+ " en la posición ");
+					for (int i = 0; i < m.length; i++) {
+						for (int j = 0; j < m.length; j++) {
+							
+							if(m[i][j]==menor){
+								System.out.print("("+(i+1) +", "+(j+1)+")");
+							}
+						}
+					}
+					System.out.println("");
+					
+					
+					System.out.print("El numero mayor es "+mayor+ " en la posición ");
+					for (int i = 0; i < m.length; i++) {
+						for (int j = 0; j < m.length; j++) {
+							
+							if(m[i][j]==mayor){
+								System.out.print("("+(i+1) +", "+(j+1)+")");
+							}
+						}
+					}
+					System.out.println("");
+			
+			break;
+
+		default:
+			
+			System.out.println("Opción no valida");
+			
+			break;
+		}
+		System.out.println("Desea elejir otra opción? 1.-si 2.-no");
+		resp=Integer.parseInt(entrada.nextLine());
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		
+		
+		} while (resp==1);
+		
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("El programa terminó");
+
+	}
+
+}
